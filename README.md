@@ -22,8 +22,10 @@ User data analysis module included.
 ### Basic story line of Precambrian
 You are a bold adventurous person. You took the challenge to explore the dangerous forest of _Amandelia_. Upon entering the forest you meet various challenges, basis of your decision you progress in your journey. After several rounds, you finally meet your destiny.
 
-### Flow diagram of Precambrian
-
 ### Code delivery
+Feature development is done in development branches such as devadikd and devsanatz. Code is integrated first and then delivered to main.
+Main contains latest stable version, ready to be released.
 
 ### Managing the Project 
+Project is managed in Blue Penguins Jira under Sankalp Phase II sprints.
+End of completion of development is 31 March, 2025.
