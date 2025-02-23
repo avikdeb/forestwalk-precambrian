@@ -10,6 +10,9 @@ public class GameConsole {
     private static String welcomeQuestion = "Enter name:";
     private static String welcomeResponse = "Welcome";
     private static String question1 = "Enter choice as mountain side (m) or riverside (r):";
+    private static String question_m1 = "Road ends at the cliff. Enter choice if you want to fly (f) or retrun (x):";
+    private static String response_m1_pass = "You have reached heaven by your wise choice. Welcome to eternity!";
+    private static String response_m1_fail = "You are a coward and kicked-off from the adventure.";
 
     /**
      * Parameterized class constructor, initialize the class variable
@@ -55,7 +58,21 @@ public class GameConsole {
         System.out.println("Welcome "+gameConsole.getCurrentInput()+"!\n");
         gameConsole = GameConsoleFactory(getConsoleInput(question1+"\n"));
         if(gameConsole.getCurrentInput().equalsIgnoreCase("m")){
-            System.out.println("You have chosen mountain side, you died falling off the mountain. "+"\n");
+            System.out.println("You have chosen mountain side, continue your journey. "+"\n");
+            gameConsole = GameConsoleFactory(getConsoleInput(question_m1)+"\n");
+            String decision_str = gameConsole.getCurrentInput();
+            System.out.println("You have chosen : "+decision_str);
+            if (decision_str.equalsIgnoreCase("f")){
+                System.out.println("Pass");
+                System.out.println(response_m1_pass);
+            }
+            else if (decision_str.equalsIgnoreCase("x")){
+                System.out.println("Fail");
+                System.out.println(response_m1_fail);
+            }
+            else {
+                System.out.println("[M] You have chosen an illegal operation, you are kicked out of the adventure. "+"\n");
+            }
         } else if (gameConsole.getCurrentInput().equalsIgnoreCase("r")) {
             System.out.println("You have chosen river side, you drowned in the river. "+"\n");
         } else {
