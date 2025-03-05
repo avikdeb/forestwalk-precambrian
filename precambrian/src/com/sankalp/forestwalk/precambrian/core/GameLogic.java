@@ -56,6 +56,9 @@ public class GameLogic {
             System.out.println("New user id created in system : "+mgr.getUserIdByUsername(conn, username));
         }
         setUser(username);
+
+        // Extremely important to close the connection to avoid DB locked
+        mgr.closeMySQLConnection(conn);
     }
 
     public String getConsoleInput() throws Exception {
