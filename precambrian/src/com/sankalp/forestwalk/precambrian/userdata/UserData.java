@@ -33,12 +33,10 @@ public class UserData {
                 FileWriter fileWriter = new FileWriter(userdataFie, true);
                 fileWriter.write(content);
                 fileWriter.close();
-
             } catch (Exception e){
                 e.printStackTrace();
             }
         }
-
     }
 
     public List getUserChoiceList() {
