@@ -1,9 +1,11 @@
 package com.sankalp.forestwalk.precambrian.core;
 
+import com.sankalp.forestwalk.precambrian.db.ForestWalkDBManager;
 import com.sankalp.forestwalk.precambrian.userdata.UserData;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class GameLogic {
@@ -37,7 +39,22 @@ public class GameLogic {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         String username = br.readLine();
-        gameLogger.logger(FormatableMessages.MSG_WELCOME+" "+username+"!");
+
+        // Authenticating the user against database
+        ForestWalkDBManager mgr = new ForestWalkDBManager();
+        Connection conn = mgr.getConnection();
+        int userid = 0;
+        userid = mgr.getUserIdByUsername(conn, username);
+        if (userid!=0) {
+            // Returning user
+            gameLogger.logger(FormatableMessages.MSG_WELCOME+" "+username+"!");
+            System.out.println("You are a returning user, your existing user id : "+userid);
+        } else {
+            // New user
+            mgr.createUser(conn, username);
+            gameLogger.logger(FormatableMessages.MSG_WELCOME+" "+username+"!");
+            System.out.println("New user id created in system : "+mgr.getUserIdByUsername(conn, username));
+        }
         setUser(username);
     }
 
