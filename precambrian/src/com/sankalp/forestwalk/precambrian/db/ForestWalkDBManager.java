@@ -45,7 +45,7 @@ public class ForestWalkDBManager {
                 System.out.println("[ERROR] Database connection is NULL.");
             }
         } catch (Exception e) {
-            System.out.println("[ERROR] Exception caught. Please refer stack trace.");
+            System.out.println("[ERROR] Exception caught, use stack trace to troubleshoot.");
             e.printStackTrace();
         }
         return connection;
